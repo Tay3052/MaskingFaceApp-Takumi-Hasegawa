@@ -1,10 +1,10 @@
 "use client";
 
 import { Flex, Button, Center } from "@yamada-ui/react";
-import { PageTop } from "./components/PageTop";
+import { PageTop } from "../../components/PageTop";
 import { useRouter } from "next/navigation";
 
-export default function Home() {
+export default function Uploaded() {
   const router = useRouter();
 
   return (
@@ -22,9 +22,9 @@ export default function Home() {
           </Button>
           <Button
             colorScheme="primary"
-            onClick={() => router.push("/pages/uploaded")}
+            onClick={() => router.push("/pages/masked")}
           >
-            画像を送信
+            画像をマスク
           </Button>
         </Flex>
       </Center>
