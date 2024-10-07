@@ -1,8 +1,9 @@
 "use client";
 
 import { Flex, Button, Center } from "@yamada-ui/react";
-import { PageTop } from "../../components/PageTop";
+import { PageTop } from "../../components/uploadComponent";
 import { useRouter } from "next/navigation";
+
 
 export default function Uploaded() {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function Uploaded() {
           <Button
             marginRight={"3xl"}
             colorScheme="primary"
-            onClick={() => router.push("/")}
+            onClick={() => removeImage()} 
           >
             画像を削除
           </Button>

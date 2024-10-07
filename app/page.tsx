@@ -1,7 +1,7 @@
 "use client";
 
 import { Flex, Button, Center } from "@yamada-ui/react";
-import { PageTop } from "./components/PageTop";
+import { PageTop } from "./components/uploadComponent";
 import { useRouter } from "next/navigation";
 
 export default function Home() {

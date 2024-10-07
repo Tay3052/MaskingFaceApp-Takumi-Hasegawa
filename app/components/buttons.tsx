@@ -1,6 +1,13 @@
 import { Button, Center, Flex } from "@yamada-ui/react";
+import { useRouter } from "next/navigation";
+export const Buttons = () => {
+  const router = useRouter();
 
-export const Buttons = (nextbtn: string, backbtn: string) => {
+  const removeImage = () => {
+    
+    router.push("/");
+  };
+
   return (
     <>
       <Center>
@@ -11,11 +18,7 @@ export const Buttons = (nextbtn: string, backbtn: string) => {
       </Center>
       <Center>
         <Flex justifyContent={"space-around"}>
-          <Button
-            marginRight={"3xl"}
-            colorScheme="primary"
-            onClick={() => router.push("/")}
-          >
+          <Button colorScheme="primary" onClick={() => router.push("/")}>
             画像を削除
           </Button>
         </Flex>
