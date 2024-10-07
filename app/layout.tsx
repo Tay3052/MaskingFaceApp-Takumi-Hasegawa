@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { UIProvider } from "@yamada-ui/react";
+import { ImageProvider } from "./utils/context";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,11 +28,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div style={{ margin: "0 0 100px 0" }}></div>
-
-        <UIProvider>{children}</UIProvider>
+        <ImageProvider>
+          <UIProvider>{children}</UIProvider>
+        </ImageProvider>
       </body>
     </html>
   );

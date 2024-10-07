@@ -1,29 +1,24 @@
-import { Box, Center, Text } from "@yamada-ui/react";
+import { Box, Center, Text, Flex } from "@yamada-ui/react";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useRecoilState } from "recoil";
-import { imageState } from "../utils/recoil/atom";
 
 export const PageTop = () => {
-  const [photo, setPhoto] = useRecoilState<File | null>(imageState);
+  const [photo, setPhoto] = useState<File | null>(null);
 
-  const onDrop = (files: File[]) => {  
-    setPhoto(files[0]); 
-  };  
-
-  const 
+  const onDrop = (files: File[]) => {
+    setPhoto(files[0]);
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  
-
 
   return (
     <>
       {/* 真ん中に来るように */}
       <Center>
-        <Flex >顔をマスクする</Flex>
+        <Box>
+          <Flex justifyContent={"flex-start"}>顔をマスクする</Flex>
+        </Box>
       </Center>
 
       <Center>
@@ -35,8 +30,7 @@ export const PageTop = () => {
             border: isDragActive ? "3px solid #222222" : "3px solid #0088cc",
             width: "800px",
             height: "600px",
-          }}
-        >
+          }}>
           {photo ? (
             <>
               <Center>
