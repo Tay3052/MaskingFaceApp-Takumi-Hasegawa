@@ -29,7 +29,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div style={{ margin: "0 0 200px 0" }}></div>
+        <div style={{ margin: "0 0 100px 0" }}></div>
+
         <UIProvider>{children}</UIProvider>
       </body>
     </html>

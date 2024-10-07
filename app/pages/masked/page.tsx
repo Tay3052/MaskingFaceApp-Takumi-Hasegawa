@@ -6,7 +6,7 @@ export default function Masked() {
   const router = useRouter();
   return (
     <>
-      <Box marginBottom={"52"} />
+      <Box marginBottom={"44"} />
       <Center>
         <Box
           border={"3px solid black"}
