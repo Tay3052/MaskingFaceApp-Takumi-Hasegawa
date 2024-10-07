@@ -7,7 +7,7 @@ interface ImageContextType {
 }
 
 export const ImageContext = createContext<ImageContextType | undefined>(
-  undefined
+  {} as ImageContextType
 );
 
 export const ImageProvider: React.FC<{ children: ReactNode }> = ({

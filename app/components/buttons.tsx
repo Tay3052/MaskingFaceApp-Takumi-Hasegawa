@@ -1,28 +1,37 @@
+import React from "react";
 import { Button, Center, Flex } from "@yamada-ui/react";
 import { useRouter } from "next/navigation";
-export const Buttons = () => {
-  const router = useRouter();
+import { useRemoveImage } from "../functions/imagesContext";
 
-  const removeImage = () => {
-    
+export const Buttons: React.FC = () => {
+  const router = useRouter();
+  const setImage  = useRemoveImage();
+  const removeImages = () => {
+    if (setImage) {
+      // 修正: removeImageが存在する場合のみ呼び出す
+      setImage();
+    }
     router.push("/");
   };
-
   return (
     <>
-      <Center>
-        <Flex justifyContent={"space-around"}>
-          <Button marginRight={"3xl"}>画像を送信</Button>
-          <Button>画像を削除</Button>
-        </Flex>
-      </Center>
-      <Center>
-        <Flex justifyContent={"space-around"}>
-          <Button colorScheme="primary" onClick={() => router.push("/")}>
-            画像を削除
-          </Button>
-        </Flex>
-      </Center>
+      {setImage ? (
+        <Center>
+          <Flex justifyContent={"space-around"}>
+            <Button
+              marginRight={"3xl"}
+              colorScheme="primary"
+              onClick={removeImages}>
+              画像を削除
+            </Button>
+            <Button
+              colorScheme="primary"
+              onClick={() => router.push("/pages/masked")}>
+              画像をマスク
+            </Button>
+          </Flex>
+        </Center>)
+      }
     </>
   );
 };
