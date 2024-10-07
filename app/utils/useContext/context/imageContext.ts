@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ImageContext } from "../utils/context";
+import { ImageContext } from "../imageProvider";
 
 export const useImageContext = () => {
   const context = useContext(ImageContext);
@@ -10,19 +10,20 @@ export const useImageContext = () => {
 };
 
 export const useSetImage = () => {
-  const { setImage } = useImageContext();
+  const { image, setImage } = useImageContext();
   const setNewImage = (image: string | null) => {
     setImage(image);
     console.log("画像を保存しました");
   };
-  return setNewImage;
+
+  return { setNewImage, image };
 };
 
 export const useRemoveImage = () => {
-  const { setImage } = useImageContext();
-  const removeImage = () => {
-    setImage(null);
+  const { image, setImage } = useImageContext();
+  const removeImage = (image: string | null) => {
+    setImage(image);
     console.log("画像を削除しました");
   };
-  return removeImage;
+  return { removeImage, image };
 };
