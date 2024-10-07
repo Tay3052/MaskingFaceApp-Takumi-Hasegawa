@@ -12,8 +12,7 @@ export default function Masked() {
           border={"3px solid black"}
           padding={"120px"}
           marginBottom={"3xl"}
-          borderRadius={"2xl"}
-        >
+          borderRadius={"2xl"}>
           <Text>ここに画像をドラッグ&ドロップしてください</Text>
         </Box>
       </Center>
