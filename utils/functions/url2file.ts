@@ -11,6 +11,5 @@ export const url2file = async (url: string, filename: string) => {
     type: blob.type,
   });
 
-  console.log("url2f:", file);
   return file;
 };
