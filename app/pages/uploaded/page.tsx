@@ -1,7 +1,7 @@
 "use client";
 
-import { PageTop } from "../../components/uploadComponent";
-import { Buttons } from "../../components/buttons";
+import { PageTop } from "../components/uploadComponent";
+import { Buttons } from "../components/buttons";
 
 export default function Uploaded() {
   return (
