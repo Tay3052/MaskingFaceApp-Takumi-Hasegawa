@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { UIProvider } from "@yamada-ui/react";
-import { ImageProvider } from "./utils/useContext/imageProvider";
-import { BoolProvider } from "./utils/useContext/boolProvider";
+import { ImageProvider } from "@/utils/useContext/imageProvider";
+import { BoolProvider } from "@/utils/useContext/boolProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

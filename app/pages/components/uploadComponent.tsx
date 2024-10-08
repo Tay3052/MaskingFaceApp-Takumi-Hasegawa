@@ -1,18 +1,15 @@
 import { Box, Center, Text, Flex } from "@yamada-ui/react";
-import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
-import { useSetImage } from "../utils/useContext/context/imageContext";
+import { useSetImage } from "@/utils/useContext/context/imageContext";
+// import { useSetBoolean } from "@/utils/useContext/context/boolContext";
 
 export const PageTop = () => {
-  const [photo, setPhoto] = useState<Blob | null>(null);
-  // const [img, setImg] = useState<string | null>(null);
-  const setImage = useSetImage().setNewImage;
+  const { image, setNewImage } = useSetImage();
 
   const onDrop = (files: Blob[]) => {
-    setPhoto(files[0]);
-    const image = URL.createObjectURL(files[0]); // 画像のURLを生成
-    setImage(image);
+    const img = URL.createObjectURL(files[0]); // 画像のURLを生成
+    setNewImage(img);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -36,17 +33,26 @@ export const PageTop = () => {
             width: "800px",
             height: "600px",
           }}>
-          {photo ? (
+          {image ? (
             <>
               <Center>
-                <Image
-                  // 画像のURLを生成
-                  src={img ?? ""}
-                  alt="アップロード画像"
-                  height={300}
-                  width={300}
-                  style={{ margin: "100px 0 0 0", border: "2px solid #333333" }}
-                />
+                {image ? (
+                  <Image
+                    // 画像のURLを生成
+                    src={image ?? ""}
+                    alt="アップロード画像"
+                    height={300}
+                    width={300}
+                    style={{
+                      margin: "150px 0 0 0",
+                      border: "2px solid #333333",
+                    }}
+                  />
+                ) : (
+                  <Text margin={"4xl"}>
+                    ここに画像をドラッグ&ドロップしてください
+                  </Text>
+                )}
               </Center>
             </>
           ) : (

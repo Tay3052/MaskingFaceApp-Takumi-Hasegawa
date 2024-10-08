@@ -13,7 +13,13 @@ export const useSetBoolean = () => {
   const { uploaded, setUploaded } = useBoolContext();
   const setBoolean = (bool: boolean | null) => {
     setUploaded(bool);
-    console.log("変換しました");
+    if (!uploaded) {
+      console.log("画像がアップロードされました。");
+    } else if (uploaded) {
+      console.log("画像が削除されました。");
+    } else {
+      console.log("エラーが発生しました。");
+    }
   };
 
   return { setBoolean, uploaded };
