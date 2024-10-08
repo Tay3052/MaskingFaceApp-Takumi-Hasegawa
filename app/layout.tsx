@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div style={{ margin: "0 0 100px 0" }}></div>
+        <div style={{ margin: "0 0 100px 0", height: "100%" }}></div>
         <BoolProvider>
           <ImageProvider>
             <UIProvider>{children}</UIProvider>

@@ -17,21 +17,20 @@ export const PageTop = () => {
   return (
     <>
       {/* 真ん中に来るように */}
-      <Center>
-        <Box>
-          <Flex justifyContent={"flex-start"}>顔をマスクする</Flex>
-        </Box>
-      </Center>
+
+      <Box marginLeft={"84"}>
+        <Flex justifyContent={"flex-start"}>顔をマスクする</Flex>
+      </Box>
 
       <Center>
         <Box
           {...getRootProps()}
-          marginBottom={"3xl"}
+          marginBottom={"2xl"}
           borderRadius={"2xl"}
+          width={"60%"}
+          height={"100%"}
           style={{
             border: isDragActive ? "3px solid #222222" : "3px solid #0088cc",
-            width: "800px",
-            height: "600px",
           }}>
           {image ? (
             <>
@@ -41,8 +40,8 @@ export const PageTop = () => {
                     // 画像のURLを生成
                     src={image ?? ""}
                     alt="アップロード画像"
-                    height={300}
-                    width={300}
+                    height={1600}
+                    width={900}
                     style={{
                       margin: "150px 0 0 0",
                       border: "2px solid #333333",
