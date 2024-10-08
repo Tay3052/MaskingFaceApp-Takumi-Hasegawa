@@ -17,27 +17,30 @@ export default function Masked() {
     setUploaded(false);
     router.push("/");
   };
-  const Masking = async () => {
-    const apiKey: string = process.env.faceDitectApiKey || "";
-    const img = await url2file(image || "", "masking.jpg");
-    console.log("img:", img);
 
-    const mask = await fetch("http://compreface/api/v1/detection/detect", {
-      method: "POST",
-      headers: {
-        "x-api-key": apiKey,
-        "content-type": "multipart/form-data",
-      },
-      body: img,
-    });
-    const result = await mask.json();
-    console.log(result);
+  const Detect = async () => {
+    const apiKey: string = process.env.NEXT_PUBLIC_API_KEY || "";
+    const url: string = process.env.NEXT_PUBLIC_WEBFRONTIA_URL || "";
+    const img: File = await url2file(image || "", "masking.jpg");
 
-    return result;
+    try {
+      const detect = await fetch(url, {
+        method: "POST",
+        headers: {
+          "x-api-key": apiKey,
+          "content-type": "multipart/form-data",
+        },
+        body: img,
+      });
+      const result = await detect.json();
+      console.log(result);
+      return result;
+    } catch (e) {
+      console.error("Fetched error", e);
+    }
   };
 
-  const maskedImage = Masking();
-  console.log("masked:", maskedImage);
+  const detectedImage = Detect();
   return (
     <>
       {/* <Box marginBottom={"44"} /> */}
