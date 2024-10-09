@@ -16,10 +16,10 @@ export const PageTop = () => {
 
   return (
     <>
-      {/* 真ん中に来るように */}
-
-      <Box marginLeft={"84"}>
-        <Flex justifyContent={"flex-start"}>顔をマスクする</Flex>
+      <Box marginLeft={"92"}>
+        <Flex justifyContent={"flex-start"}>
+          <Text>顔をマスクする</Text>
+        </Flex>
       </Box>
 
       <Center>
@@ -28,7 +28,7 @@ export const PageTop = () => {
           marginBottom={"2xl"}
           borderRadius={"2xl"}
           width={"60%"}
-          height={"100%"}
+          height={"80%"}
           style={{
             border: isDragActive ? "3px solid #222222" : "3px solid #0088cc",
           }}>
@@ -36,17 +36,17 @@ export const PageTop = () => {
             <>
               <Center>
                 {image ? (
-                  <Image
-                    // 画像のURLを生成
-                    src={image ?? ""}
-                    alt="アップロード画像"
-                    height={1600}
-                    width={900}
-                    style={{
-                      margin: "150px 0 0 0",
-                      border: "2px solid #333333",
-                    }}
-                  />
+                  <Box margin={"100px auto"}>
+                    <Image
+                      src={image ?? ""}
+                      alt="アップロード画像"
+                      height={640}
+                      width={480}
+                      style={{
+                        border: "2px solid #333333",
+                      }}
+                    />
+                  </Box>
                 ) : (
                   <Text margin={"4xl"}>
                     ここに画像をドラッグ&ドロップしてください
