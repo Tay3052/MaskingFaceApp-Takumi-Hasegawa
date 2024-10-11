@@ -1,4 +1,7 @@
 export const url2file = async (url: string, filename: string) => {
+  if (!url) {
+    throw new Error("url is empty");
+  }
   const res = await fetch(url);
 
   if (!res.ok) {

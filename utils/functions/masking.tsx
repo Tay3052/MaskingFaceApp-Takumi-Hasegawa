@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import styled from "styled-components"; // 修正: named import を default import に変更
 import { Box } from "@yamada-ui/react";
@@ -14,20 +15,14 @@ interface Mask {
 }
 
 interface MaskingProps {
-  coordinates: Mask[];
-  x_max: number;
-  y_max: number;
-  x_min: number;
-  y_min: number;
+  coordinates: Mask;
 }
 
-export const Masking: React.FC<MaskingProps> = async (coordinates) => {
+export const Masking: React.FC<MaskingProps> = (coordinates) => {
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const mainImgRef = React.useRef<HTMLImageElement | null>(null);
   const overLayImgRef = React.useRef<HTMLImageElement | null>(null);
   const mainImgSrc = useSetImage().image || "";
-  const overLayImgSrc =
-    ellipse instanceof Blob ? URL.createObjectURL(ellipse) : "";
 
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
@@ -37,13 +32,14 @@ export const Masking: React.FC<MaskingProps> = async (coordinates) => {
 
     canvas.width = mainImg.width || 0;
     canvas.height = mainImg.height || 0;
-    ctx.drawImage(mainImg, 0, 0);
+    // これはいらない
+    // ctx.drawImage(mainImg, 0, 0);
 
-    const { x_min, y_min, x_max, y_max } = coordinates;
+    const { x_min, y_min, x_max, y_max } = coordinates.coordinates;
     const overlayWidth = x_max - x_min;
     const overlayHeight = y_max - y_min;
 
-    ctx.drawImage(overLayImg, x_min, y_min, overlayWidth, overlayHeight);
+    ctx.drawImage(overLayImg, x_max, y_max, overlayWidth, overlayHeight);
   }, [coordinates]);
 
   return (
@@ -51,18 +47,17 @@ export const Masking: React.FC<MaskingProps> = async (coordinates) => {
       <Image
         ref={mainImgRef}
         src={mainImgSrc}
-        width={480}
-        height={640}
+        width={1300}
+        height={600}
         alt=""
-        objectFit="cover"
       />
       <Image
         ref={overLayImgRef}
-        src={overLayImgSrc}
-        width={480}
-        height={640}
+        src={ellipse}
+        width={100}
+        height={600}
         alt=""
-        objectFit="cover"
+        objectFit="overlay"
       />
       <MaskingCanvas ref={canvasRef} />
     </MaskingBox>
