@@ -23,8 +23,6 @@ export const Masking: React.FC<MaskingProps> = (coordinates) => {
   const mainImgRef = React.useRef<HTMLImageElement | null>(null);
   const overLayImgRef = React.useRef<HTMLImageElement | null>(null);
   const mainImgSrc = useSetImage().image || "";
-  const overLayImgSrc =
-    ellipse instanceof Blob ? URL.createObjectURL(ellipse) : "";
 
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
@@ -34,7 +32,8 @@ export const Masking: React.FC<MaskingProps> = (coordinates) => {
 
     canvas.width = mainImg.width || 0;
     canvas.height = mainImg.height || 0;
-    ctx.drawImage(mainImg, 0, 0);
+    // これはいらない
+    // ctx.drawImage(mainImg, 0, 0);
 
     const { x_min, y_min, x_max, y_max } = coordinates.coordinates;
     const overlayWidth = x_max - x_min;
@@ -48,13 +47,15 @@ export const Masking: React.FC<MaskingProps> = (coordinates) => {
       <Image
         ref={mainImgRef}
         src={mainImgSrc}
-        width={480}
-        height={640}
+        width={1300}
+        height={600}
         alt=""
       />
       <Image
         ref={overLayImgRef}
-        src={overLayImgSrc}
+        src={ellipse}
+        width={100}
+        height={600}
         alt=""
         objectFit="overlay"
       />
